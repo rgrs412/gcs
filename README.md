@@ -7,4 +7,5 @@
 ### Option 2
 - Open project up in IDE and run the 'Main' class
 
+After that, navigate the activities through command-line
 ![Menu](./images/menu.png)
