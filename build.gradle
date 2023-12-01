@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id "com.github.johnrengelman.shadow" version "7.1.2"
+}
+
+group 'org.example'
+version '1.0.0'
+
+shadowJar {
+    archiveBaseName.set(project.getName())
+    archiveClassifier.set('')
+    archiveVersion.set('1.0.0')
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'org.example.Main'
+        )
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    // https://mvnrepository.com/artifact/com.konghq/unirest-java
+    implementation("com.konghq:unirest-java:3.14.5")
+
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    compileOnly("org.projectlombok:lombok:1.18.24")
+    annotationProcessor('org.projectlombok:lombok:1.18.24')
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
